@@ -608,3 +608,153 @@ nav { z-index: 100; }
 .delay-4 { animation-delay: 0.45s; }
 .delay-5 { animation-delay: 0.6s; }
 .delay-6 { animation-delay: 0.75s; }
+
+
+/* ============================================
+   HOVER ANIMATIONS & EFFECTS
+   ============================================ */
+
+/* --- Custom Cursor --- */
+*, *::before, *::after { cursor: none !important; }
+
+.cursor-dot {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--purple);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.15s, height 0.15s, background 0.15s;
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 32px; height: 32px;
+  border: 1px solid rgba(163,120,252,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, border-color 0.2s, transform 0.08s;
+}
+
+.cursor-dot.hovering {
+  width: 12px; height: 12px;
+  background: #b895ff;
+}
+
+.cursor-ring.hovering {
+  width: 48px; height: 48px;
+  border-color: rgba(163,120,252,0.9);
+  box-shadow: 0 0 12px rgba(163,120,252,0.3);
+}
+
+/* --- Cursor Trail --- */
+.trail {
+  position: fixed;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--purple);
+  pointer-events: none;
+  z-index: 99990;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: trail-fade 0.5s ease forwards;
+}
+
+@keyframes trail-fade {
+  0%   { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0;   transform: translate(-50%, -50%) scale(0); }
+}
+
+/* --- Project Cards: Lift + Neon Glow --- */
+.project-card {
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(163,120,252,0.15), 0 0 0 1px rgba(163,120,252,0.25);
+}
+
+.project-card:hover .project-name {
+  color: var(--purple);
+  text-shadow: 0 0 18px rgba(163,120,252,0.5);
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+/* --- Nav Links: Neon Glow --- */
+.nav-links a {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  width: 0; height: 1px;
+  background: var(--purple);
+  box-shadow: 0 0 8px var(--purple);
+  transition: width 0.25s, left 0.25s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.nav-links a:hover {
+  color: var(--purple);
+  text-shadow: 0 0 12px rgba(163,120,252,0.6);
+  box-shadow: inset 0 0 16px rgba(163,120,252,0.08);
+}
+
+/* --- Buttons: Neon Glow --- */
+.btn-primary:hover {
+  box-shadow: 0 0 18px rgba(163,120,252,0.55), 0 0 40px rgba(163,120,252,0.2);
+  transform: translateY(-2px);
+  transition: all 0.2s;
+}
+
+.btn-ghost:hover {
+  box-shadow: 0 0 12px rgba(163,120,252,0.25);
+  transform: translateY(-2px);
+  transition: all 0.2s;
+}
+
+.btn {
+  transition: all 0.2s;
+}
+
+/* --- Contact Links: Slide + Glow --- */
+.contact-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-link::before {
+  content: '';
+  position: absolute;
+  left: -100%; top: 0; bottom: 0;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(163,120,252,0.06), transparent);
+  transition: left 0.35s;
+}
+
+.contact-link:hover::before { left: 100%; }
+
+.contact-link:hover {
+  color: var(--purple);
+  text-shadow: 0 0 10px rgba(163,120,252,0.4);
+  padding-left: 12px;
+}
+
+.contact-link-icon {
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.contact-link:hover .contact-link-icon {
+  text-shadow: 0 0 8px var(--purple);
+}
